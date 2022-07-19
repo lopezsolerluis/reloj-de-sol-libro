@@ -1,10 +1,2 @@
 pdfbook2 -s -p a4paper --no-crop -o 0 -i 0 -t 0 -b 0 --signature=16 reloj-de-sol-imprimir.pdf  // sin "invertir"
 pdfbook2 -p a4paper --no-crop -o 0 -i 0 -t 0 -b 0 --signature=16 reloj-de-sol-imprimir.pdf
-
-// para cortar páginas 
-pdftk mozilla.pdf cat 1-2 4-end output documento.pdf
-mozilla.pdf is the document I want to edit.
-cat is the order.
-1-2 y 4-end they are the pages that it will keep or, what is the same, it will eliminate the third because it will keep 1, 2 and 4 until the end (end).
-output tells you that the next will be the new document.
-documento.pdf is the document you will create without page 3.
