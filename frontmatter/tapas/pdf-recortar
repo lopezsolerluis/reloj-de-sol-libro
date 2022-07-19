@@ -1,0 +1,2 @@
+pdfcrop --margins '-450 0 0 0' --clip tapa.pdf tapa-imprimir.pdf
+pdfcrop --margins '0 0 -450 0' --clip contratapa.pdf contratapa-imprimir.pdf

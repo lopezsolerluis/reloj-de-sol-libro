@@ -1,0 +1,47 @@
+\documentclass[coverheight=210mm,coverwidth=148.5mm, bleedwidth=13mm,
+spinewidth=13mm, foldingmargin, marklength=4mm, 11pt]{bookcover}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{microtype}
+\usepackage{qrcode}
+\usepackage[outline]{contour}
+\contourlength{.5pt}
+
+\usepackage[sc]{mathpazo} % Use the Palatino font with smallcaps
+%\usepackage[osf]{mathpazo} % Palatino with smallcaps and oldstyle numbers
+
+% \usepackage{avant} % Avant Garde Sans Serif
+% \usepackage{helvet}
+%\usepackage{tgadventor}
+%\usepackage{AlegreyaSans}
+\usepackage{biolinum}
+%\usepackage{fetamont}
+\usepackage{eulervm} % Euler math
+
+
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+
+\definecolor{openscadyellow}{HTML}{FFFFE5}
+
+\begin{document}
+
+\begin{bookcover}
+
+   \begin{bookcoverelement}{color}{bg front}
+     openscadyellow
+   \end{bookcoverelement}
+   \begin{bookcoverelement}{color}{bg spine}
+     openscadyellow
+   \end{bookcoverelement}
+
+
+    \begin{bookcoverelement}{center}{front}
+     \includegraphics{tapa-A5.pdf}
+   \end{bookcoverelement}
+
+
+\end{bookcover}
+
+\end{document}

@@ -1,0 +1,290 @@
+\documentclass{standalone}
+\usepackage[latin1]{inputenc} 
+\usepackage[spanish,es-lcroman]{babel}                                          
+\selectlanguage{spanish}    
+\usepackage{tikz-3dplot-circleofsphere}
+\usetikzlibrary{3d,backgrounds,quotes,angles,decorations.text,
+  shapes.geometric, shapes.misc,decorations.shapes, arrows.meta, babel}
+\usepackage{wasysym}
+\usepackage{marvosym}
+    
+\begin{document}
+  \centering
+  \tdplotsetmaincoords{70}{130}
+  \begin{tikzpicture}[tdplot_main_coords, scale=2]
+
+    \pgfmathsetmacro{\r}{2} % radio
+    \pgfmathsetmacro{\rt}{.4} % radio de la Tierra
+    \pgfmathsetmacro{\colatitud}{55}%{55}
+    \pgfmathsetmacro{\decsol}{-10}%{55}
+    \coordinate (O) at (0,0,0); % centro
+
+    \shade[ball color = blue, opacity = 0.2,tdplot_screen_coords] (O)
+    circle [radius = \r*1cm];
+
+    
+%    meridianos celestes (Â¡lo que me costÃ³!)
+    \tdplotsetrotatedcoords{0}{\colatitud}{0}         
+    \begin{scope}
+      \foreach \a in {0,30,...,360} {
+        \tdplottransformmainrot{sin(\colatitud)*cos(\a)}
+        {sin(\colatitud)*sin(\a)}{0}
+        \tdplotgetpolarcoords{\tdplotresx}{\tdplotresy}{\tdplotresz}
+        \tdplotCsDrawGreatCircle[thin,red!60!white,
+        opacity=.7]{\r}{\tdplotresphi}{\tdplotrestheta} }
+    \end{scope}
+
+
+    \tdplotsetrotatedcoords{0}{-\colatitud}{0}
+
+    
+    % solcito
+    % \foreach \a in {50} { \shade [ball color=yellow,
+    %   opacity=.8,tdplot_rotated_coords]
+    %   ({.99*\r*cos(\a)*sin(90+\decsol)},{.99*\r*sin(\a)*sin(90+\decsol)},
+    %   {.99*\r*cos(90+\decsol)}) circle (2pt); }
+
+   
+
+
+    % estrellas
+    
+    
+    %paralelos celestes
+    \foreach \a in {-75,-60,...,75}
+    {\tdplotCsDrawCircle[red!60!white,thin,opacity=.7]
+      {\r}{0}{-\colatitud}{\a}}
+
+    
+    % paralelo solar
+    % \tdplotCsDrawCircle[yellow!80!black,ultra
+    % thick,opacity=1,tdplotCsFill/.style={opacity=0.2}]
+    % {\r}{0}{-\colatitud}{-\decsol}
+
+
+    % cÃ­rculos verticales
+    % \foreach \a in {0,30,...,360} {\tdplotCsDrawLonCircle[very
+    %   thin, red!60!white, opacity=.7]{\r}{\a}}
+
+    % almucantaradas
+    % \foreach \a in {-75,-60,...,75} {\tdplotCsDrawLatCircle[very
+    %   thin,red!60!white, opacity=.7]{\r}{\a}}
+       
+    % horizonte
+    \tdplotCsDrawLatCircle[thin,green!80!black,
+    tdplotCsFill/.style={opacity=0.2}]{\r}{0}
+
+    % ecuador terrestre
+    % \tdplotCsDrawGreatCircle%
+    % [red,thin,tdplotCsFill/.style={opacity=0.1}]{.102mm}{0}{-\colatitud}
+
+    % ecuador celeste
+    \tdplotCsDrawGreatCircle%
+    [yellow!70!white,thick,
+    tdplotCsFill/.style={opacity=0.1}]{\r}{0}{-\colatitud}
+
+    % etiquetas
+    % \fill[green!60!black] (0,0,\r) circle (1pt) node [above
+    % left=2pt]{Cenit ($Z$)}; \fill[green!60!black] (0,0,-\r) circle
+    % (1pt) node [below right=2pt]{Nadir};
+
+    % \draw[decoration={text along
+    %   path,text={|\sffamily\footnotesize\color{red!80!white}|Ecuador
+    %     celeste}, raise=5pt}, decorate, tdplot_rotated_coords]
+    % plot[variable=\t,domain=45:170] ({\r*cos(\t)},{\r*sin(\t)},0);
+
+    % \draw[decoration={text along
+    %   path,text={|\sffamily\footnotesize\color{cyan!80!black}|Meridiano
+    %     del lugar}, raise=3pt}, decorate, tdplot_rotated_coords]
+    % plot[variable=\t,domain=-60:60] ({\r*cos(\t)},0,{\r*sin(\t)});
+    
+    \draw[decoration={text along path,
+      text={|\sffamily\footnotesize\color{green!60!black}|Horizonte},
+      raise=3pt}, decorate, tdplot_main_coords]
+    plot[variable=\t,domain=50:190] ({\r*cos(\t)},{\r*sin(\t)},0);
+
+    \filldraw[red!70!black, opacity=.7,tdplot_rotated_coords ] (xyz
+    spherical cs:radius=\r,latitude=90,longitude=0) circle(1pt) node
+    [above right=3pt] {$PSC$} (xyz spherical
+    cs:radius=\r,latitude=-90,longitude=0) circle (1pt) node [below
+    left=3pt] {$PNC$};
+
+    \begin{scope}[on background layer]
+
+      % vertical del lugar
+      % \draw[ultra thick, green!60!black] (0,0,-\r) --
+      % node[sloped,pos=.75,above]{\footnotesize vertical del lugar}
+      % (0,0,\r);
+      
+      % eje del mundo
+      \filldraw[very thick,red!70!black,
+      opacity=.7,tdplot_rotated_coords] (xyz spherical
+      cs:radius=\r,latitude=-90,longitude=0) --
+      node[sloped,pos=.2,above,red!80!black, opacity=1]{\footnotesize
+        eje del mundo} (xyz spherical
+      cs:radius=\r,latitude=90,longitude=0);
+      
+      \shade [ball color=blue, opacity=.8] (O) circle[radius=2mm]
+      node[below right=4mm] {};
+
+      % \draw[red!90!black] (180:6mm) node [text width=10mm] {\tiny
+      % Ecuador Terrestre};
+
+       \draw[tdplot_rotated_coords] (xyz spherical
+       cs:radius=.09mm,latitude=90-\colatitud,longitude=90) node
+       []{\small \Gentsroom};
+
+      %% sentido de rotaciÃ³n
+
+      % Declinación
+
+
+      
+    \end{scope}
+
+      \tdplotsetrotatedcoords{0}{-\colatitud}{30}
+      
+      % \draw[green!70!black,>=Latex,ultra thick, tdplot_rotated_coords]
+      % plot[variable=\t,domain=0:30] (xyz spherical
+      % cs:radius=\r,latitude=\t,longitude=120);
+
+      % \draw[green!70!black,>=Latex,ultra thick, tdplot_rotated_coords,
+      % fill=green!70!black, opacity=.6] plot[variable=\t,domain=0:30]
+      % (xyz spherical cs:radius=\r,latitude=\t,longitude=120) --
+      % (0,0,0) -- cycle;
+
+      % \draw[green!50!black,>=Latex, thick, tdplot_rotated_coords, ->]
+      % plot[variable=\t,domain=0:30] (xyz spherical
+      % cs:radius=.85*\r,latitude=\t,longitude=120);
+
+      % \draw[green!50!black, tdplot_rotated_coords] (xyz spherical
+      % cs:radius=.7*\r,latitude=18,longitude=120) node {\Large
+      %   $\delta$};
+      
+      % % Ascensión Recta
+      % \draw[red!70!black,>=Latex,ultra thick, tdplot_rotated_coords]
+      % plot[variable=\t,domain=90:120] (xyz spherical
+      % cs:radius=\r,latitude=0,longitude=\t);
+
+      % \draw[red!80!white,thick, tdplot_rotated_coords, opacity=.6,
+      % fill=red!70!white] plot[variable=\t,domain=0:-30]
+      % ({\r*cos(\t)},{\r*sin(\t)},0) -- (0,0,0) -- cycle;
+
+      % \draw[red!70!black,>=Latex, thick, tdplot_rotated_coords,
+      % ->] plot[variable=\t,domain=90:120] (xyz spherical
+      % cs:radius=.85*\r,latitude=0,longitude=\t);
+      
+      % \draw[red!70!black, tdplot_rotated_coords] (xyz spherical
+      % cs:radius=.65*\r,latitude=0,longitude={90+18}) node {\Large
+      %   $\alpha$};
+
+
+    \tdplotsetrotatedcoords{0}{-\colatitud}{0}
+
+    % meridiano del lugar
+    % \tdplotCsDrawLonCircle[very
+    % thick,cyan!80!white,tdplotCsFill/.style={opacity=0.2}]{\r}{90}
+    
+    % % eclíptica
+    % \tdplotCsDrawGreatCircle%
+    % [yellow,thin,tdplotCsFill/.style={opacity=0.2}]
+    % {\r}{20}{-\colatitud-20}
+
+%    \tdplotsetrotatedcoords{20}{-\colatitud-20}{0}
+
+    \shade [ball color=yellow, opacity=.8, tdplot_rotated_coords] (xyz
+    spherical cs:radius=1*\r,latitude=0,longitude=270) circle (2pt)
+    node[below=3pt] {\LARGE \bfseries Culminación inferior (0h)};
+        
+    % \draw[yellow!80!black,>=Latex, ultra thick, tdplot_rotated_coords,
+    % ->] plot[variable=\t,domain=106:116] (xyz spherical
+    % cs:radius=1*\r,latitude=0,longitude=\t);
+
+    % \draw[decoration={text along path,
+    %   text={|\sffamily\footnotesize\color{yellow!85!white}|Eclíptica},
+    %   raise=3pt}, decorate, tdplot_rotated_coords]
+    % plot[variable=\t,domain=70:-90] (xyz spherical
+    % cs:radius=1*\r,latitude=0,longitude=\t);
+    
+ %   \tdplotsetrotatedcoords{0}{-\colatitud}{30}
+
+ %   mov sol
+    %     \draw[yellow,dashed, ultra thick, tdplot_rotated_coords, ]
+    % plot[variable=\t,domain=170:140] (xyz spherical
+    % cs:radius=1*\r,latitude=0,longitude=\t);
+
+    % \draw[yellow,>=Latex, thick, tdplot_rotated_coords]
+    % plot[variable=\t,domain=0:360] (xyz spherical
+    % cs:radius=1*\r,latitude=0,longitude=\t);
+
+    % \draw[decoration={text along path,
+    %   text={|\sffamily\footnotesize\color{yellow!55!black}|Movimiento
+    %     aparente del Sol}, raise=3pt}, decorate,
+    % tdplot_rotated_coords] plot[variable=\t,domain=100:10] (xyz
+    % spherical cs:radius=1*\r,latitude=0,longitude=\t);
+
+
+
+    % Estrella
+    % \draw[decoration={shape backgrounds,shape=star,shape size=5pt},
+    % decorate, tdplot_rotated_coords,fill=purple] (xyz spherical
+    % cs:radius=\r,latitude=30,longitude={90+30});
+
+    % \draw[purple,>=Latex, ultra thick, tdplot_rotated_coords, ->]
+    % plot[variable=\t,domain=115:90] (xyz spherical
+    % cs:radius=1*\r,latitude=30,longitude=\t);
+
+    % \foreach \a in {0,10,...,360} {
+
+    %   \shade [ball color=yellow, opacity=.8]
+    %   ({.99*\r*cos(\a)},{.99*\r*sin(\a)},0) circle (1pt);
+
+    %   }
+    
+    % Punto Vernal
+    % \draw[tdplot_rotated_coords, fill=black] (\r,0,0) circle (.7pt)
+    % node [above right] {\Large $\vernal$};
+    
+    % \draw[>=Latex, ultra thick, tdplot_rotated_coords, ->]
+    % plot[variable=\t,domain=87:62] (xyz spherical
+    % cs:radius=1*\r,latitude=0,longitude=\t);
+    
+    %% estrellas
+    \begin{scope}[on background layer]
+%       \pgfmathsetseed{21}
+
+%       % \tikzset{flechas/.style=yellow!90!white, line width=3pt,
+%       %   tdplot_rotated_coords, ->, >= Latex}
+
+%       \foreach \x in {1,...,3} {
+
+%         % \pgfmathsetmacro{\lat}{int(acos(2*random()-1)-90)}
+%         % \pgfmathsetmacro{\lat}{int(random(-1,1)*random(56,85))}
+%         \pgfmathsetmacro{\lat}{0}
+%         \pgfmathsetmacro{\lon}{random(0,360)}
+
+% %        \ifthenelse{\lat=0}
+%  %       {}
+%   %     {    
+%         \draw[decoration={shape backgrounds,shape=star,shape
+%           size=5pt}, decorate, tdplot_rotated_coords,fill=yellow]
+%         plot[variable=\lo,domain=\lon-1:\lon+1]
+%         ({\r*.98*cos(\lo)*cos(\lat)},
+%         {\r*.98*sin(\lo)*cos(\lat)},{\r*.98*sin(\lat)});
+% %
+%         \draw[yellow!70!white, line width=2pt, tdplot_rotated_coords,
+%         ->, opacity=.8, >=Latex, line join=bevel ]
+%         plot[variable=\lo,domain=\lon+2:\lon+55]
+%         ({\r*1*cos(\lo)*cos(\lat)},
+%         {\r*1*sin(\lo)*cos(\lat)},{\r*1*sin(\lat)});
+%    %   }
+%     }
+    \end{scope}
+    
+
+
+      
+  \end{tikzpicture}
+\end{document}
+
+

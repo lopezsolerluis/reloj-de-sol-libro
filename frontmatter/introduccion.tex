@@ -1,0 +1,135 @@
+\chapter{A modo de introducción}
+
+El presente librito, o manual, es el resultado de unas lecciones
+escritas para un curso dictado durante el año 2021; de ahí el
+carácter, quizás un tanto pretencioso, de <<2\sptext{da} edición>> con
+que quise distinguirlo.
+
+Dichas lecciones, a su vez, reconocen una doble inspiración. La
+primera de ellas llegó de la mano de uno de mis colegas docentes,
+Gonzalo Ciaffone, quien un día inolvidable llamó mi atención sobre el
+mágico objeto protagonista de estas páginas, perfectamente desconocido
+por mí hasta ese momento. Tras varios días dedicados a regocijarme
+considerando su sabia y delicada maravilla, sentí la necesidad de
+aplicarme a entender cómo reproducirlo: en otras palabras, a
+entenderlo cabalmente. Para ello tuve primero que descubrir un
+lenguaje de programación que me permitiera pensar y expresar la
+construcción del reloj de Sol digital; afortunadamente lo hallé en
+\openscad, el cual aprendí a chapucear primero, y a ejercer luego con
+mayor solvencia, mientras resolvía el reloj.
+
+La segunda inspiración de las lecciones es más fácil de declarar, aun
+cuando resulta mucho más misteriosa: soy docente, y siento la
+invencible necesidad de enseñar todo lo que aprendo.
+
+El formato dialogado y con una cierta aspiración de novela que elegí
+para el desarrollo de las lecciones y que mantuve para este manual me
+pareció apropiado y divertido cuando urdí su inicio; con el correr de
+las páginas comprobé luego que también me ayudaba a llevar adelante la
+propia exposición del contenido teórico. No pocas fueron las
+encrucijadas en las cuales el diálogo entre las protagonistas fue el
+que me permitió descubrir la única manera de avanzar a través de
+asuntos necesariamente difíciles de exponer. Espero que este formato
+resulte también grato para el lector.
+
+Otra virtud surgida de la escritura de las lecciones pude comprobarla
+en el código producido durante la misma: la versión que obtuve
+mientras las preparaba resultó mucho mejor que la que me permitió
+imprimir mi primer reloj de Sol digital. Comparando ambos códigos no
+puedo atribuir la diferencia exclusivamente a una mejor comprensión y
+dominio del lenguaje de \openscad: no lo había ejercido tanto entre
+uno y otro. Tengo para mí que fue el diálogo entre Cecilia y Antonia
+---las mentadas protagonistas del librito--- el que me permitió
+reflexionar más y mejor acerca del objeto que estaba (o estábamos ya)
+escribiendo, lo cual resultó en un texto saludablemente más terso,
+claro y optimizado. Esta virtud no debiera tomarme por sorpresa,
+después de todo: de manera muy clara puede leerse en uno de los
+consejos que enriquecen el libro \emph{The Pragmatic
+  Programmer}.\footnote{\emph{The Pragmatic Programmer: Your Journey
+    to Mastery, 20th Anniversary Edition}, Andrew Hunt y David Hurst
+  Thomas, 2019.} En el tema 20 ---\emph{Debugging} (corrección de
+errores)--- los autores proponen un proceder que denominan <<del
+patito de hule>>, y que consiste esencialmente en obligarse a explicar
+a alguien ---o, incluso, a \emph{algo}--- lo que se quiere resolver.
+
+Quizá pueda parecer extraño a quien no escribe regularmente que el
+solo hecho de poner en palabras una cuestión ayude a entenderla mejor,
+o incluso a resolverla; sin embargo, es una realidad conocida desde
+hace tiempo. Se dice que el propio Montaigne, en el siglo
+\textsc{xvi}, ya había afirmado que nada aclara tanto las ideas como
+ponerse a escribirlas.\footnote{No pude encontrar la referencia
+  precisa; la noticia me llega de Paul Graham quien en su libro
+  \emph{On Lisp} (Prentice Hall, 1993) la trae en la página 2.}
+
+Atribuí al principio de esta introducción el origen inmediato de estas
+páginas a un curso dictado durante el año 2021. No sería honesto de mi
+parte dejar de confesar que su éxito resultó, cuando menos,
+discutible: de los 15 participantes que se sintieron convocados por la
+propuesta sólo dos me acompañaron hasta el final. Esta abrumadora
+deserción seguramente se debe a una suma de causas variadas, aun
+cuando la mayoría de ellas, ¡ay de mí!, sin duda deben reconocerme
+como culpable. En cualquier caso me gustaría ofrecer en mi defensa la
+frase de Séneca que uno de los dos alumnos que decidió terminar el
+curso eligió para adornar su reloj de Sol digital, y que yo consideré
+luego apropiado estampar al frente de los capítulos de esta segunda
+edición: <<\emph{Non est ad astra mollis e terris via}>>: No hay un
+camino fácil de la tierra a las estrellas. Serás tú, querido e
+improbable lector, quien decida si esta inscripción es una bienvenida
+o una amenaza.
+
+Por último, me siento también en la obligación de sumarme al consejo
+universal: si alguien pretende aprender a programar, no deberá
+limitarse a leer, sino lanzarse a escribir. El aprendizaje de
+cualquier idioma exige su ejercicio: los lenguajes de programación no
+se encuentran al margen de esta necesidad. Es por esto por lo que te
+aconsejo que escribas todos los textos que tu curiosidad te sugiera a
+medida que avanzas a través de los capítulos, sin miedo frente a la
+pantalla en blanco ni a los errores: El único \emph{bug} incorregible
+es el que no se escribe.
+
+
+\vfill
+
+\section{Convenciones}
+
+\subsection{Números de línea}
+
+A fin de facilitar las referencias dentro del texto, se añaden números
+de línea al código informático en su margen izquierdo:
+
+\begin{lstlisting}
+$fn = 200;
+
+sphere(r=10);
+cube([25,10,20]);
+cylinder(h=15, r=5);
+\end{lstlisting}%$
+
+Por otra parte, cuando el código consta de una sola línea, tal
+numeración se omite:
+
+\begin{lstlisting}[numbers=none]
+cube([20,30,40]);
+\end{lstlisting}
+
+%\newpage
+
+\subsection{Prioridad de los operadores aritméticos}
+
+\openscad{} respeta la prioridad usual de los operadores aritméticos;
+de esta forma, una expresión como
+  \begin{lstlisting}[numbers=none]
+1+2*3-4    
+  \end{lstlisting}
+se interpreta como si estuviera escrita así:
+  \begin{lstlisting}[numbers=none]
+1+(2*3)-4    
+  \end{lstlisting}
+y, por lo tanto, devuelve ``\texttt{3}'' como resultado.
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../libro"
+%%% End:

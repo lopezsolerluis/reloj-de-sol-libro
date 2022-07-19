@@ -1,0 +1,45 @@
+\documentclass[a5paper, 11pt]{memoir}
+\pagestyle{ruled} % o Ruled
+\usepackage[scale=.75]{geometry}
+\usepackage{etoolbox}
+\newtoggle{libro}
+\togglefalse{libro} % false -> para imprimir, true -> ebook
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+%            \iftoggle{libro}{ebook}{libro}
+
+\usepackage{reloj}
+
+% \hypersetup{
+%     colorlinks=true,
+%     linkcolor=black,
+%     filecolor=black,      
+%     urlcolor=black,
+%   }
+
+% \includeonly{frontmatter/titulo}
+% \includeonly{backmatter/notas}
+
+\ifdef{\capitulo}{\includeonly{\capitulo}}{}
+
+\begin{document}
+
+\input{contenido}
+
+\thispagestyle{empty}
+
+% \begin{center}
+\centering  \emph{\LARGE Notas} 
+% \end{center}
+
+\vspace{.5cm}
+
+\begin{Spacing}{1.5}
+  
+\Repetir{20}{\hrulefill\par}
+
+\end{Spacing}
+
+
+\end{document}

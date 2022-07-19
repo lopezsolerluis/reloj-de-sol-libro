@@ -1,0 +1,59 @@
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\thispagestyle{empty} % Suppress page numbering
+
+\AddToShipoutPictureBG*{%
+  \AtPageLowerLeft{%
+    \raisebox{-0.018\height}{%
+      \includegraphics[width=\paperwidth, scale=2]{frontmatter/codigo-tapa-2}%
+    }%
+  }
+}
+
+\AddToShipoutPictureBG*{%
+  \AtPageUpperLeft{%
+    \raisebox{-\height}{%
+      \includegraphics[width=\paperwidth]{frontmatter/reloj-desarmado-3}%
+    }%
+  }
+}
+
+\begin{tikzpicture}[remember picture,overlay]
+
+  \node [rectangle, rounded corners, fill=orange, opacity=0.3, minimum
+  width=.8\paperwidth, minimum height=1.8cm, above left, yshift=5.8cm,
+  xshift=.1cm] (box) at (current page.south east) (box title){};
+  
+  \node[anchor=center, text width=\textwidth,
+  font=\sffamily\Huge\bfseries, xshift=0cm] at (box
+  title.center){\fontsize{28}{36}\selectfont Un reloj de Sol
+      digital};
+
+
+  \node [rectangle, rounded corners, fill=orange, opacity=0.3, minimum
+  width=.35\paperwidth, minimum height=1cm, above left, yshift=3.15cm,
+  xshift=.1cm] (box) at (current page.south east) (box author){};
+  
+  \node[anchor=west, text width=\textwidth,
+  font=\sffamily\Large\bfseries, xshift=1em] at (box
+  author.west){Luis G. López Soler};
+
+  \node [rectangle, rounded corners, fill=orange, opacity=0.35, minimum
+  width=.25\paperwidth, minimum height=1cm, above right, yshift=.85cm,
+  xshift=-.1cm] (box) at (current page.south west) (box edition){};
+  
+  \node[anchor=west, text width=\textwidth,
+  font=\sffamily\Large\bfseries, xshift=-8.em] at (box
+  edition.east){2\sptext{da} Edición};
+
+  
+\end{tikzpicture}
+
+%\newpage % Make sure the following content is on a new page
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../libro"
+%%% End:

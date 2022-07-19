@@ -1,0 +1,210 @@
+\ProvidesPackage{libroreloj}
+
+\usepackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{microtype}
+
+\newsubfloat{figure}% Allow subfloats in figure environment
+
+\usepackage[export]{adjustbox} % Para alinear dos \includegraphics
+
+\usepackage{anyfontsize}
+
+\usepackage[sc]{mathpazo} % Use the Palatino font with smallcaps
+%\usepackage[osf]{mathpazo} % Palatino with smallcaps and oldstyle numbers
+
+% \usepackage{avant} % Avant Garde Sans Serif
+% \usepackage{helvet}
+%\usepackage{tgadventor}
+%\usepackage{AlegreyaSans}
+\usepackage{biolinum}
+%\usepackage{fetamont}
+\usepackage{eulervm} % Euler math
+
+\usepackage{lettrine} % Para las iniciales
+%\renewcommand{\LettrineFontHook}{\Zallmanfamily} % Para las iniciales "ornamentadas"
+
+% \usepackage{libertine}
+%%%% EB GARAMOD
+% \usepackage[cmintegrals,cmbraces]{newtxmath}
+% \usepackage{ebgaramond-maths}
+
+
+\usepackage[T1]{fontenc}
+
+\usepackage{tikz}
+
+\usetikzlibrary{quotes,angles,decorations.text,
+  decorations.pathreplacing, shapes.geometric, decorations.markings,
+  shapes.misc,decorations.shapes,babel,calc, arrows.meta, patterns, backgrounds}
+
+\usepackage{marvosym}
+\usepackage[marvosym]{tikzsymbols}
+\usepackage[font=small,width=.9\textwidth]{caption}
+%\captionsetup{font=small,width=.9\textwidth}
+%\newsubfloat{figure}
+%\usepackage{subcaption}
+%\usepackage{subfig}
+%\usepackage{graphbox}
+
+\usepackage{pdfpages}
+
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=blue,
+  }  
+
+
+\usepackage{refcount}
+\newcommand{\pagedifference}[2]{%
+  \number\numexpr\getpagerefnumber{#2}-\getpagerefnumber{#1}\relax}
+\newcommand{\pagedifferenceplusone}[2]{%
+  \number\numexpr\getpagerefnumber{#2}-\getpagerefnumber{#1}+1\relax}
+
+\usepackage{listings}
+
+\lstdefinelanguage{openscad} {morekeywords={cube, cylinder, sphere,
+    translate, rotate, difference, rotate_extrude, square, color,
+    polygon, linear_extrude, rotate_extrude, hull, scale, mirror,
+    union, echo, circle, square, text, import},
+  morekeywords=[2]{for, module, function, pow, tan, if, else, else if, let, round, ceil, floor, assert, min, max, undef, len}, sensitive=false,
+  morecomment=[l]{//}, morecomment=[s]{/*}{*/}, morestring=[b]", }
+
+\lstset{ basicstyle=\ttfamily\small, language=openscad, numbers=left,
+  numberstyle=\tiny, numbersep=10pt,
+  keywordstyle=\color{blue}\bfseries,
+  keywordstyle=[2]\color{green!45!black}\bfseries, breaklines=true,
+  showstringspaces=false,
+  breakatwhitespace=true }
+  
+\newcommand{\annielogo}{A\kern-.1em\relax\raisebox{-.2em}{n}\kern-.08em\relax
+  \raisebox{0em}{N}\kern-.115em\relax
+  \raisebox{.23em}{I}\kern-.115em\relax E}
+
+\newcommand{\openscad}{\texttt{OpenSCAD}}
+
+\newcommand{\coord}[1]{\texttt{#1}}
+
+\newcommand*\keystroke[1]{%
+  \begin{tikzpicture}[baseline=(key.base), very thin, line cap=round, black, rounded corners=0pt]%
+    \node [draw, fill=white, fill opacity=1, rectangle, rounded corners=2pt, inner sep=1pt, minimum width=1.2em, font=\scriptsize\sffamily] (key) {#1\strut};
+
+    \begin{scope}[on background layer]
+      \draw [rounded corners=1pt, fill=white] ($ (key.north west) + (-2pt, 2pt) $) rectangle ($ (key.south east) + (2pt, -2pt) $);
+
+      \fill [gray!60] ($ (key.south west) + (2pt, 0.1pt) $) -- ($ (key.south west) + (-1pt, -2pt) $)
+                  -- ($ (key.south east) + (1pt, -2pt) $)  -- ($ (key.south east) + (-2pt, 0.1pt) $) -- cycle;
+
+      \fill [gray!60] ($ (key.south east) + (-0.1pt, 2pt) $) -- ($ (key.south east) + (2pt, -1pt) $)
+                  -- ($ (key.north east) + (2pt, 1pt) $)    -- ($ (key.north east) + (-0.1pt, -2pt) $) -- cycle;
+    \end{scope}
+
+    \draw ($ (key.north west) + (0.1pt, -2pt) $) -- ($ (key.north west) + (-2pt, 1pt) $);
+    \draw ($ (key.north west) + (2pt, -0.1pt) $) -- ($ (key.north west) + (-1pt, 2pt) $);
+
+    \draw ($ (key.north east) + (-0.1pt, -2pt) $) -- ($ (key.north east) + (2pt, 1pt) $);
+    \draw ($ (key.north east) + (-2pt, -0.1pt) $) -- ($ (key.north east) + (1pt, 2pt) $);
+
+    \draw ($ (key.south west) + (0.1pt, 2pt) $) -- ($ (key.south west) + (-2pt, -1pt) $);
+    \draw ($ (key.south west) + (2pt, 0.1pt) $) -- ($ (key.south west) + (-1pt, -2pt) $);
+
+    \draw ($ (key.south east) + (-0.1pt, 2pt) $) -- ($ (key.south east) + (2pt, -1pt) $);
+    \draw ($ (key.south east) + (-2pt, 0.1pt) $) -- ($ (key.south east) + (1pt, -2pt) $);
+  \end{tikzpicture}%
+}
+
+\usepackage{eso-pic}
+
+% Contador necesario en el capítulo 26:  Una hora escrita con Sol --- III
+\newcounter{m}
+
+\chapterstyle{dash}
+
+% Para que títulos y secciones no estén en negrita
+ \setsecheadstyle{\Large \scshape}
+ \setsubsecheadstyle{\large \scshape}
+ \setsubsubsecheadstyle{\scshape}
+% Para que el índice general no esté en negrita
+ \renewcommand*{\cftchapterfont}{\scshape}
+ \renewcommand*{\cftchapterpagefont}{\scshape}
+ 
+\settocdepth{subsection}
+
+\newcommand{\director}{Fumington}
+
+% Para el autor del poema del epílogo
+\newcommand{\attrib}[1]{%
+  \nopagebreak{\raggedleft\footnotesize #1\par}}
+
+\let\oldverse\verse
+\renewenvironment{verse}{%
+    \vspace{-\parskip}
+    \oldverse
+}
+
+% para los espacios entre párrafos
+% \raggedbottom
+%\usepackage{parskip}
+%\parskip=0pt
+\setlength{\parskip}{0pt}
+
+\copypagestyle{miruled}{ruled}
+\makeevenhead{miruled}{}{}{}
+\makeoddhead{miruled}{}{}{}
+\makeheadrule{miruled}{0pt}{0pt}
+
+\renewcommand{\appendixpagename}{Apéndice}
+\renewcommand{\appendixtocname}{Apéndice}
+
+% Para que la página "Apéndices" no lleve número de página
+\let\plainappendixpage\appendixpage
+\makeatletter
+\renewcommand{\appendixpage}{%
+  \begingroup
+  \let\ps@plain\ps@empty
+  \plainappendixpage
+  \endgroup}
+\makeatother
+% Para cambiar el estilo de la palabra "Apéndices"
+\renewcommand*{\parttitlefont}{\scshape\Huge}
+
+% Para que las subsecciones resulten numeradas
+% \setsecnumdepth{subsection}
+% \maxsecnumdepth{subsection}
+
+\newcommand\Monthname[1][EMPTY]{%
+  \ifnum1=#1Enero\else
+  \ifnum2=#1Febrero\else
+  \ifnum3=#1Marzo\else
+  \ifnum4=#1Abril\else
+  \ifnum5=#1Mayo\else
+  \ifnum6=#1Junio\else
+  \ifnum7=#1Julio\else
+  \ifnum8=#1Agosto\else
+  \ifnum9=#1Septiembre\else
+  \ifnum10=#1Octubre\else
+  \ifnum11=#1Noviembre\else
+  \ifnum12=#1Diciembre\else
+  \fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi
+}
+\usepackage{datetime}
+\newdateformat{mesdeanio}{%
+  \Monthname[\THEMONTH] de \THEYEAR}
+
+\newcommand\grande{\fontsize{36}{43}\selectfont}
+
+\newcommand\Repetir[2]{
+  \foreach \n in {1,...,#1}{#2}
+  }
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "libro"
+%%% End:

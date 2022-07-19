@@ -1,0 +1,40 @@
+\documentclass[a6paper, 10pt, oneside]{memoir}
+\pagestyle{empty} 
+\usepackage[margin=7mm]{geometry}
+\linespread{1.05} % Line spacing - Palatino needs more space between lines
+\copypagestyle{chapter}{plain}% Copy plain page syle to chapter page style
+\makeoddfoot{chapter}% Adjust odd footer for chapter page style
+  {}% Left odd footer
+  {}% Center odd footer
+  {}% Right odd footer
+\makeevenfoot{chapter}% Adjust odd footer for chapter page style
+  {}% Left odd footer
+  {}% Center odd footer
+  {}% Right odd footer
+\usepackage{etoolbox}
+\newtoggle{libro}
+\toggletrue{libro} %  true -> ebook
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+%            \iftoggle{libro}{ebook}{libro}
+
+\usepackage{reloj}
+
+% \hypersetup{
+%     colorlinks=true,
+%     linkcolor=black,
+%     filecolor=magenta,      
+%     urlcolor=blue,
+%   }  
+
+%\includeonly{frontmatter/introduccion}
+%\includeonly{capitulos/apendice-1}
+
+\ifdef{\capitulo}{\includeonly{\capitulo}}{}
+  
+\begin{document}
+
+\input{contenido}
+
+\end{document}
