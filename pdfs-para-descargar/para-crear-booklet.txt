@@ -1,2 +1,2 @@
-pdfbook2 -s -p a4paper --no-crop -o 0 -i 0 -t 0 -b 0 --signature=16 reloj-de-sol-imprimir.pdf  // sin "invertir"
-pdfbook2 -p a4paper --no-crop -o 0 -i 0 -t 0 -b 0 --signature=16 reloj-de-sol-imprimir.pdf
+pdfbook2 -s -p a4paper --no-crop -o 0 -i 0 -t 0 -b 0 --signature=16 reloj-de-sol-libro.pdf  // sin "invertir"
+pdfbook2 -p a4paper --no-crop -o 0 -i 0 -t 0 -b 0 --signature=16 reloj-de-sol-libro.pdf
