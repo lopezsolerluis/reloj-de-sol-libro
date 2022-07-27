@@ -8,4 +8,4 @@ Hay versiones para pantalla y para imprimir; las últimas versiones ya compilada
 
 ## Contacto
 
-Para ponerse en contacto con el autor: <mailto:llopez@cnba.uba.ar> y <mailto:lopezsolerluis@gmail.com>.
+Para ponerse en contacto con el autor: <llopez@cnba.uba.ar> y <lopezsolerluis@gmail.com>.
