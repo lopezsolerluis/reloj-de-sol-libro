@@ -287,6 +287,8 @@ ebook.pdf
 ./reloj-de-sol-imprimir.pdf
 frontmatter/tapas/cubierta.pdf
 reloj-de-sol-libro-book.pdf
+reloj-de-sol-libro-A.pdf
+reloj-de-sol-libro-B.pdf
 cc.txt
 
 # REVTeX puts footnotes in the bibliography by default, unless the nofootinbib

@@ -5,3 +5,7 @@ Una suerte de librito o manual que recoge los encuentros, conversaciones y modes
 ## PDFs para descargar
 
 Hay versiones para pantalla y para imprimir; las últimas versiones ya compiladas pueden encontarse aquí: <https://github.com/lopezsolerluis/reloj-de-sol-libro/tree/main/pdfs-para-descargar>.
+
+## Contacto
+
+Para ponerse en contacto con el autor: <mailto:llopez@cnba.uba.ar> y <mailto:lopezsolerluis@gmail.com>.
