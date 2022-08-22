@@ -286,7 +286,7 @@ ebook.pdf
 ./reloj-de-sol-pantalla.pdf
 ./reloj-de-sol-imprimir.pdf
 frontmatter/tapas/cubierta.pdf
-frontmatter/tapas/Luis.jpeg
+frontmatter/tapas/*.jpeg
 reloj-de-sol-libro-book.pdf
 reloj-de-sol-libro-A.pdf
 reloj-de-sol-libro-B.pdf
